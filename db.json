@@ -1,9 +1,28 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
+    "types": [
+      { "id": 1, "title": "Income" },
+      { "id": 2, "title": "Expenses" }
     ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
+    "categories": [
+      { "id": 1, "title": "Food" },
+      { "id": 2, "title": "House Maintenance Bill" },
+      { "id": 3, "title": "Electricity Bill" },
+      { "id": 4, "title": "Internet & TV Bill" },
+      { "id": 5, "title": "Netflix" },
+      { "id": 6, "title": "Parking Bill" },
+      { "id": 7, "title": "Phone Bill" },
+      { "id": 8, "title": "GYM Membership" },
+      { "id": 9, "title": "Car Fuel" },
+      { "id": 10, "title": "Credit Card" },
+      { "id": 11, "title": "Investments" },
+      { "id": 12, "title": "Salary" }
     ],
-    "profile": { "name": "typicode" }
+    "currencies": [
+        { "id": 1, "title": "RON" },
+        { "id": 2, "title": "EUR" },
+        { "id": 3, "title": "USD" }
+    ],
+    "entries": [
+        { "id": 1, "title": "Income title", "description": "income description", "created_at": "28.08.2022", "type_id": 1, "category_id": 12, "value": 10000, "currency_id": 1}
+      ]
   }
