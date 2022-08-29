@@ -1,6 +1,9 @@
 <template>
-  <div class="hello">
-    <h1>your first entry here</h1>
+  <div>
+    <span>{{entry.title}}</span> 
+    <span>{{entry.description}}</span> 
+    <span>{{entry.created_at}}</span>
+    <span>{{entry.value}}</span>
   </div>
 </template>
 
@@ -8,8 +11,11 @@
 export default {
   name: 'Entry',
   props: {
-    msg: String
-  }
+    entry: {
+      type: Object,
+      required: true
+    }
+  },
 }
 </script>
 
