@@ -13,7 +13,7 @@ function getItems(resource) {
 }
 
 function getItem(resource, id) {
-    return axios.get(db_url + '/'+ resource +'/' + id)
+         axios.get(db_url + '/'+ resource +'/' + id)
         .then(response => {
             return response.data
         })

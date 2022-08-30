@@ -1,27 +1,58 @@
 <template>
     <form>
-        <input type="text" v-model="entry.title" placeholder="title" />
-        <textarea v-model="entry.description" cols="30" rows="10" placeholder="description"></textarea>
-        <input type="text" v-model="created_at" placeholder="DD.MM.YYYY" />
-        <select v-model="entry.type_id">
-            <option value="">select type</option>
-            <option v-for="type in types" :key="type.id" :value="type.id">{{ type.title }}</option>
-        </select>
-        <select v-model="entry.category_id">
-            <option value="">select category</option>
-            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.title }}</option>
-        </select>
-        <select v-model="entry.currency_id">
-            <option value="">select currency</option>
-            <option v-for="currency in currencies" :key="currency.id" :value="currency.id">{{ currency.title }}</option>
-        </select>
-        <input type="text" v-model="entry.value" placeholder="value">
+        <BaseInput
+            v-model="entry.title"
+            label="Title"
+            type="text"
+        />
+        
+        <BaseInput
+            v-model="entry.description"
+            label="Description"
+            type="text"
+        />
+
+        <BaseInput
+            v-model="entry.created_at"
+            label="Date"
+            type="text"
+        />
+
+        <BaseSelect
+            :options="types"
+            v-model="entry.type_id"
+            label="Select type"
+        />
+
+        <BaseSelect
+            :options="categories"
+            v-model="entry.category_id"
+            label="Select category"
+        />
+
+        <BaseSelect
+            :options="currencies"
+            v-model="entry.currency_id"
+            label="Select currency"
+        />
+
+        <BaseInput
+            v-model="entry.value"
+            label="Value"
+            type="text"
+        />
     </form>
+    {{ entry }}
 </template>
 
 <script>
-
+import BaseInput from '@/components/form/BaseInput.vue'
+import BaseSelect from '@/components/form/BaseSelect.vue'
 export default {
+    components: {
+        BaseInput,
+        BaseSelect
+    },
     data() {
         return {
             entry: {
