@@ -1,28 +1,108 @@
 {
-    "types": [
-      { "id": 1, "title": "Income" },
-      { "id": 2, "title": "Expenses" }
-    ],
-    "categories": [
-      { "id": 1, "title": "Food" },
-      { "id": 2, "title": "House Maintenance Bill" },
-      { "id": 3, "title": "Electricity Bill" },
-      { "id": 4, "title": "Internet & TV Bill" },
-      { "id": 5, "title": "Netflix" },
-      { "id": 6, "title": "Parking Bill" },
-      { "id": 7, "title": "Phone Bill" },
-      { "id": 8, "title": "GYM Membership" },
-      { "id": 9, "title": "Car Fuel" },
-      { "id": 10, "title": "Credit Card" },
-      { "id": 11, "title": "Investments" },
-      { "id": 12, "title": "Salary" }
-    ],
-    "currencies": [
-        { "id": 1, "title": "RON" },
-        { "id": 2, "title": "EUR" },
-        { "id": 3, "title": "USD" }
-    ],
-    "entries": [
-        { "id": 1, "title": "Income title", "description": "income description", "created_at": "28.08.2022", "type_id": 1, "category_id": 12, "value": 10000, "currency_id": 1}
-      ]
-  }
+  "types": [
+    {
+      "id": 1,
+      "title": "Income"
+    },
+    {
+      "id": 2,
+      "title": "Expenses"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Food"
+    },
+    {
+      "id": 2,
+      "title": "House Maintenance Bill"
+    },
+    {
+      "id": 3,
+      "title": "Electricity Bill"
+    },
+    {
+      "id": 4,
+      "title": "Internet & TV Bill"
+    },
+    {
+      "id": 5,
+      "title": "Netflix"
+    },
+    {
+      "id": 6,
+      "title": "Parking Bill"
+    },
+    {
+      "id": 7,
+      "title": "Phone Bill"
+    },
+    {
+      "id": 8,
+      "title": "GYM Membership"
+    },
+    {
+      "id": 9,
+      "title": "Car Fuel"
+    },
+    {
+      "id": 10,
+      "title": "Credit Card"
+    },
+    {
+      "id": 11,
+      "title": "Investments"
+    },
+    {
+      "id": 12,
+      "title": "Salary"
+    }
+  ],
+  "currencies": [
+    {
+      "id": 1,
+      "title": "RON"
+    },
+    {
+      "id": 2,
+      "title": "EUR"
+    },
+    {
+      "id": 3,
+      "title": "USD"
+    }
+  ],
+  "entries": [
+    {
+      "id": 1,
+      "title": "Income title",
+      "description": "income description",
+      "created_at": "28-08-2022",
+      "typeId": 1,
+      "categoryId": 12,
+      "value": 10000,
+      "currencyId": 1
+    },
+    {
+      "title": "Cumparaturi",
+      "description": "mancare",
+      "created_at": "30-08-2022",
+      "typeId": "2",
+      "categoryId": "1",
+      "currencyId": "1",
+      "value": "40",
+      "id": 2
+    },
+    {
+      "title": "Cumparaturi",
+      "description": "mancare",
+      "typeId": "2",
+      "categoryId": "1",
+      "currencyId": "1",
+      "value": "170",
+      "created_at": "31-08-2022",
+      "id": 3
+    }
+  ]
+}
