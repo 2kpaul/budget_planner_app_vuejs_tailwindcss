@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="p-4 w-full mx-auto max-w-xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <div class="p-4 w-full mx-auto max-w-2xl bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
     <div class="flex justify-between items-center mb-4">
         <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Budget for {{ currentMonth }}</h5>
         <router-link to="/entries/create" class="text-sm font-medium text-green-600 hover:underline dark:text-green-500">Add Entry</router-link>

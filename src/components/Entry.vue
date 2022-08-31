@@ -1,26 +1,21 @@
 <template>
 <li class="container mx-auto py-3 sm:py-4">
-  <div class="grid grid-cols-4 gap-3 place-items-center">
-      <div class="grid place-items-center">
-        <div :class="(entry.type.title === 'Income') ? 
-        'text-white bg-green-600 font-bold rounded-full text-xs w-14 h-6 p-1 mb-3' : 
-        'text-white bg-red-600 font-bold rounded-full text-xs w-16 h-6 p-1 mb-3' ">
+  <div class="grid grid-cols-5 gap-3 place-items-center">
+      <div :class="(entry.type.title === 'Income') ? 
+        'text-white bg-green-600 font-bold rounded-full text-xs w-14 h-6 p-1' : 
+        'text-white bg-red-600 font-bold rounded-full text-xs w-16 h-6 p-1' ">
           {{entry.type.title}}
         </div>
-        <div class="text-white bg-cyan-600 font-bold rounded-full text-xs w-14 h-6 p-1">
+      <div class="text-white bg-cyan-600 font-bold rounded-full text-xs w-14 h-6 p-1">
           {{entry.category.title}}
         </div>
-      </div>
       <div class="min-w-0">
           <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
               {{entry.title}}
           </p>
-          <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+          <!-- <p class="text-sm text-gray-500 truncate dark:text-gray-400">
               {{entry.description}}
-          </p>
-          <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-              
-          </p>
+          </p> --> 
       </div>
       <div :class="(entry.type.title === 'Income') ? 'text-green-600 inline-flex text-sm font-semibold text-gray-900 dark:text-white' 
       : 'text-red-600 inline-flex text-sm font-semibold text-gray-900 dark:text-white'">
