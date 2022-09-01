@@ -110,8 +110,8 @@ export default {
     methods: {
         submitEntry() {
             if(!this.validateForm(this.entry)) {
-                console.log(this.entry)
                 DataService.saveItem('entries', this.entry)
+                this.$store.dispatch('setFlashMessage', 'New entry : "' + this.entry.title + '" was added to list')
                 this.entry = {}
             } 
         },

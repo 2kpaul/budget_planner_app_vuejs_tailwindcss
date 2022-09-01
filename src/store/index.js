@@ -8,6 +8,7 @@ export default createStore({
     currencies: [],
     types: [],
     entries: [],
+    flashMessage: ''
   },
   getters: {
   },
@@ -16,6 +17,13 @@ export default createStore({
       //get only resource if it has filter params
       const resource = payload.resource.split("?");
       state[resource[0]] = payload.data
+    },
+    SET_FLASH_MESSAGE(state, message) {
+      state['flashMessage'] = message
+
+      setTimeout(() => {
+        state['flashMessage'] = ''
+      }, 4000)
     }
   },
   actions: {
@@ -38,7 +46,7 @@ export default createStore({
         })
     },
     fetchCurrentMonthResourceEntries({ commit }, resource) {
-      DataService.getItems(resource)
+      DataService.getItems(resource + '?_expand=category&_expand=type&_expand=currency&_sort=created_at&_order=asc')
         .then(response => {
           //console.log(response);
           const currentMonthData = response.filter( el => {
@@ -54,6 +62,9 @@ export default createStore({
         .catch(error => {
           console.log(error)
         })
+    },
+    setFlashMessage({ commit }, message) {
+      commit('SET_FLASH_MESSAGE', message)
     }
   },
   modules: {

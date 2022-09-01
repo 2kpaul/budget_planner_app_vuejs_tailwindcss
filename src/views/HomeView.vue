@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div class="alert-success" v-if="this.$store.state.flashMessage">{{ this.$store.state.flashMessage }}</div>
   <div class="entries-card">
     <div class="header">
       <h5>Budget for {{ currentMonth }}</h5>
@@ -11,6 +12,7 @@
     </ul>
     </div>
   </div>
+  
 </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   created() {
     this.$store.dispatch(
       'fetchCurrentMonthResourceEntries', 
-      'entries?_expand=category&_expand=type&_expand=currency&_sort=created_at&_order=asc'
+      'entries'
     )
   },
   computed: {

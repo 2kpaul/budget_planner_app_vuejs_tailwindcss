@@ -3,10 +3,10 @@
   <div class="content-entry">
       <div :class="(entry.type.title === 'Income') ? 'type-income' : 'type-expenses'">
           {{entry.type.title}}
-        </div>
+      </div>
       <div class="category">
           {{entry.category.title}}
-        </div>
+      </div>
       <div class="title">
           <p>
               {{entry.title}}
@@ -21,17 +21,32 @@
       <div class="created-date">
           {{entry.created_at}}
       </div>
+      <div class="actions">
+        <button @click="deleteEntry(entry.id)">delete</button>
+      </div>
   </div>
 </li>
 </template>
 
 <script>
+import DataService from '@/services/DataService'
 export default {
   name: 'Entry',
   props: {
     entry: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    deleteEntry(id) {
+      if(confirm('delete ' + '"'+ this.entry.title +'" ?')){
+        DataService.deleteItem('entries', id)
+        this.$store.dispatch(
+          'fetchCurrentMonthResourceEntries', 
+          'entries'
+        )
+      }
     }
   },
 }
