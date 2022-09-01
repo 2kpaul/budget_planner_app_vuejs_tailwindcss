@@ -3,3 +3,96 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.form-create-entry {
+    @apply p-4 w-full mx-auto max-w-md bg-white rounded-lg border shadow-md sm:p-8;
+
+    h1 {
+        @apply text-xl font-bold mb-4
+    }
+
+    .datepicker {
+        @apply grid grid-cols-3 mb-6 items-center
+    }
+
+    button {
+        @apply focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 
+        focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2
+    }
+    
+}
+
+.base-input{
+    @apply mb-6 grid grid-cols-3 items-center;
+
+    input, select {
+        @apply block p-2 w-full col-span-2
+        text-gray-900 bg-gray-50 rounded-lg border 
+        border-gray-300 sm:text-xs focus:ring-green-500 
+        focus:border-green-500
+    }
+}
+
+label {
+    @apply block mb-2 text-xs font-bold text-gray-900
+}
+
+.error {
+    @apply text-red-500
+}
+
+.category {
+    @apply text-white bg-cyan-600 font-bold rounded-full text-xs p-1
+}
+
+.type-income {
+    @apply text-white bg-green-600 font-bold rounded-full text-xs p-1
+}
+
+.type-expenses {
+    @apply text-white bg-red-600 font-bold rounded-full text-xs p-1
+}
+
+.entries {
+    @apply divide-y divide-gray-200 dark:divide-gray-700;
+
+    li {
+        @apply container mx-auto py-3 sm:py-4
+    }
+
+    .content-entry {
+        @apply grid grid-cols-5 gap-4 place-items-center;
+
+        .title {
+            @apply text-sm font-medium text-gray-900 truncate
+        }
+    
+        .created-date { 
+            @apply text-sm text-gray-500 truncate
+        }
+    
+        .income-value {
+            @apply text-green-600 inline-flex text-sm font-semibold
+        }
+
+        .expenses-value {
+            @apply text-red-600 inline-flex text-sm font-semibold
+        }
+    }
+}
+
+.entries-card {
+    @apply p-4 w-full mx-auto max-w-3xl bg-white rounded-lg border shadow-md sm:p-8;
+
+    .header {
+        @apply flex justify-between items-center mb-4;
+
+        h5 {
+            @apply text-xl font-bold leading-none text-gray-900 dark:text-white;
+        }
+
+        a {
+            @apply text-sm font-medium text-green-600 hover:underline dark:text-green-500;
+        }
+    }
+}

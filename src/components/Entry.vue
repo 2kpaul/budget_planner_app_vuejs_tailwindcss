@@ -1,27 +1,24 @@
 <template>
-<li class="container mx-auto py-3 sm:py-4">
-  <div class="grid grid-cols-5 gap-3 place-items-center">
-      <div :class="(entry.type.title === 'Income') ? 
-        'text-white bg-green-600 font-bold rounded-full text-xs w-14 h-6 p-1' : 
-        'text-white bg-red-600 font-bold rounded-full text-xs w-16 h-6 p-1' ">
+<li>
+  <div class="content-entry">
+      <div :class="(entry.type.title === 'Income') ? 'type-income' : 'type-expenses'">
           {{entry.type.title}}
         </div>
-      <div class="text-white bg-cyan-600 font-bold rounded-full text-xs w-14 h-6 p-1">
+      <div class="category">
           {{entry.category.title}}
         </div>
-      <div class="min-w-0">
-          <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+      <div class="title">
+          <p>
               {{entry.title}}
           </p>
-          <!-- <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+          <!-- <p>
               {{entry.description}}
           </p> --> 
       </div>
-      <div :class="(entry.type.title === 'Income') ? 'text-green-600 inline-flex text-sm font-semibold text-gray-900 dark:text-white' 
-      : 'text-red-600 inline-flex text-sm font-semibold text-gray-900 dark:text-white'">
+      <div :class="(entry.type.title === 'Income') ? 'income-value' : 'expenses-value'">
           {{ entry.type.title === 'Income' ? '+' : '-' }}  {{ entry.value.toLocaleString("en-US") }} {{ entry.currency.title}}
       </div>
-      <div class="text-sm text-gray-500 truncate dark:text-gray-400">
+      <div class="created-date">
           {{entry.created_at}}
       </div>
   </div>
@@ -39,21 +36,3 @@ export default {
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
