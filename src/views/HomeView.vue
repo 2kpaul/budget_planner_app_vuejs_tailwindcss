@@ -31,7 +31,10 @@ export default {
     
   },
   created() {
-    this.$store.dispatch('fetchCurrentMonthResourceEntries', 'entries?_expand=category&_expand=type&_expand=currency')
+    this.$store.dispatch(
+      'fetchCurrentMonthResourceEntries', 
+      'entries?_expand=category&_expand=type&_expand=currency&_sort=created_at&_order=asc'
+    )
   },
   computed: {
     entries() {
