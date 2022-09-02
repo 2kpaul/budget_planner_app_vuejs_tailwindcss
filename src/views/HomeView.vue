@@ -4,7 +4,7 @@
   <div v-for="budget in budgets" :key="budget.id" class="budgets">
     <div class="entries-card col-span-2">
       <div class="header">
-        <h5>{{ budget.title }} for {{ currentMonth }}</h5>
+        <h2>{{ budget.title }} for {{ currentMonth }} <span> - {{ budget.currency.title }} currency</span></h2>
         <router-link to="/entries/create">Add Entry</router-link>
       </div>
       <div>
@@ -16,7 +16,8 @@
 
     <div class="stats-card">
       <div class="header">
-        <h5>{{ budget.title }} statistics for {{ currentMonth }}</h5>
+        <h2>{{ budget.title }} statistics for {{ currentMonth }}</h2>
+        <h3>{{ budget.currency.title }} currency</h3>
       </div>
       <ul role="list" class="stats-entries">
         <li>
