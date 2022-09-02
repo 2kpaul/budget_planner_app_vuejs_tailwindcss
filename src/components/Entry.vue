@@ -46,9 +46,13 @@ export default {
     deleteEntry(id) {
       if(confirm('delete ' + '"'+ this.entry.title +'" ?')){
         DataService.deleteItem('entries', id)
-        this.$store.dispatch(
-          'fetchBudgetsWithMonthlyEntries', 
-        )
+        .then(response => {
+          this.$store.dispatch('fetchBudgetsWithMonthlyEntries')
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        
       }
     }
   },

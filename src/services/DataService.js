@@ -7,7 +7,6 @@ const db_url = 'http://localhost:3000';
 function getItems(resource) {
     return axios.get(db_url + '/' + resource)
         .then(response => {
-            //console.log(response.data)
             return response.data
         })
         .catch(error => {
@@ -25,26 +24,16 @@ function getItem(resource, id) {
         })
 }
 
-function saveItem(resource, entry) {
-    
-    axios.post(db_url + '/' + resource, entry)
-        .then(response => {
-            router.push({ name: 'home'})
-        })
-        .catch(error => {
-            console.log(error)
-        })
+async function saveItem(resource, entry) {
+
+    await axios.post(db_url + '/' + resource, entry)
+        
 }
 
-function deleteItem(resource, id) {
-    axios.delete(db_url + '/' + resource + '/' + id)
-        .then(response => {
-            //redirect
-            console.log(response.data)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+async function deleteItem(resource, id) {
+    
+    await axios.delete(db_url + '/' + resource + '/' + id)
+        
 }
 
 export default { getItems, getItem, saveItem, deleteItem }

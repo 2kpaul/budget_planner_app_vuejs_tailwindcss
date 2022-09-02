@@ -21,6 +21,7 @@ export default createStore({
       //get only resource if it has filter params
       const resource = payload.resource.split("?");
       state[resource[0]] = payload.data
+      state.dataReady = true
     },
     SET_FLASH_MESSAGE(state, message) {
       state['flashMessage'] = message

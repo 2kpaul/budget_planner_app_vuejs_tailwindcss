@@ -1,6 +1,6 @@
 <template>
     <form 
-    @submit.prevent="submitEntry"
+    @submit.prevent="submitForm"
     class="form-create-entry"
     >
         <h1>New Entry</h1>
@@ -65,7 +65,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import BaseInput from '@/components/form/BaseInput.vue'
 import BaseSelect from '@/components/form/BaseSelect.vue'
 import Datepicker from '@vuepic/vue-datepicker';
@@ -111,11 +110,12 @@ export default {
         }
     },
     methods: {
-        submitEntry() {
+        submitForm() {
             if(!this.validateForm(this.entry)) {
                 DataService.saveItem('entries', this.entry)
                 this.$store.dispatch('setFlashMessage', 'New entry : "' + this.entry.title + '" was added to list')
                 this.entry = {}
+                this.$router.push({ name: 'home'})
             } 
         },
 
