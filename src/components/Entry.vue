@@ -16,7 +16,7 @@
           </p> --> 
       </div>
       <div :class="(entry.type.title === 'Income') ? 'income-value' : 'expenses-value'">
-          {{ entry.type.title === 'Income' ? '+' : '-' }}  {{ entry.value.toLocaleString("en-US") }} {{ entry.currency.title}}
+          {{ entry.type.title === 'Income' ? '+' : '-' }}  {{ parseInt(entry.value).toLocaleString("en-US") }} {{ currency }}
       </div>
       <div class="created-date">
           {{entry.created_at}}
@@ -36,6 +36,10 @@ export default {
     entry: {
       type: Object,
       required: true
+    },
+    currency: {
+      type: String,
+      required: true
     }
   },
   methods: {
@@ -43,8 +47,7 @@ export default {
       if(confirm('delete ' + '"'+ this.entry.title +'" ?')){
         DataService.deleteItem('entries', id)
         this.$store.dispatch(
-          'fetchCurrentMonthResourceEntries', 
-          'entries'
+          'fetchBudgetsWithMonthlyEntries', 
         )
       }
     }

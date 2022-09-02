@@ -1,4 +1,16 @@
 {
+  "budgets": [
+    {
+      "id": 1,
+      "title": "Monthly Budget",
+      "currencyId": 1
+    },
+    {
+      "id": 2,
+      "title": "Savings",
+      "currencyId": 2
+    }
+  ],
   "types": [
     {
       "id": 1,
@@ -57,6 +69,10 @@
     {
       "id": 12,
       "title": "Salary"
+    },
+    {
+      "id": 13,
+      "title": "Rent"
     }
   ],
   "currencies": [
@@ -79,30 +95,60 @@
       "title": "Income title",
       "description": "income description",
       "created_at": "28-08-2022",
+      "budgetId": "1",
       "typeId": 1,
       "categoryId": 12,
-      "value": 10000,
-      "currencyId": 1
+      "value": 10000
     },
     {
       "title": "Cumparaturi",
       "description": "mancare",
       "created_at": "30-08-2022",
+      "budgetId": "1",
       "typeId": "2",
       "categoryId": "1",
-      "currencyId": "1",
       "value": "40",
       "id": 2
     },
     {
       "title": "Cumparaturi",
       "description": "mancare",
+      "budgetId": "1",
       "typeId": "2",
       "categoryId": "1",
-      "currencyId": "1",
       "value": "170",
       "created_at": "31-08-2022",
       "id": 3
+    },
+    {
+      "title": "Abonament World Class",
+      "description": "abonament sala",
+      "created_at": "01-09-2022",
+      "budgetId": "1",
+      "typeId": "2",
+      "categoryId": "8",
+      "value": "250",
+      "id": 4
+    },
+    {
+      "title": "Paul",
+      "description": "salariu",
+      "created_at": "10-09-2022",
+      "budgetId": "1",
+      "typeId": "1",
+      "categoryId": "12",
+      "value": "10000",
+      "id": 5
+    },
+    {
+      "title": "Rent",
+      "description": "",
+      "created_at": "02-09-2022",
+      "budgetId": "2",
+      "typeId": "1",
+      "categoryId": "13",
+      "value": "350",
+      "id": 6
     }
   ]
 }

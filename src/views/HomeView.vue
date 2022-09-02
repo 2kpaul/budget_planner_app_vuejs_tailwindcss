@@ -1,18 +1,45 @@
 <template>
-<div>
+<div v-if="this.$store.state.dataReady">
   <div class="alert-success" v-if="this.$store.state.flashMessage">{{ this.$store.state.flashMessage }}</div>
-  <div class="entries-card">
-    <div class="header">
-      <h5>Budget for {{ currentMonth }}</h5>
-      <router-link to="/entries/create">Add Entry</router-link>
+  <div v-for="budget in budgets" :key="budget.id" class="budgets">
+    <div class="entries-card col-span-2">
+      <div class="header">
+        <h5>{{ budget.title }} for {{ currentMonth }}</h5>
+        <router-link to="/entries/create">Add Entry</router-link>
+      </div>
+      <div>
+      <ul role="list" class="entries">
+          <Entry v-for="entry in budget.entries" :key="entry.id" :entry="entry" :currency="budget.currency.title"/> 
+      </ul>
+      </div>
     </div>
-    <div>
-    <ul role="list" class="entries">
-        <Entry v-for="entry in entries" :key="entry.id" :entry="entry"/> 
-    </ul>
-    </div>
+
+    <div class="stats-card">
+      <div class="header">
+        <h5>{{ budget.title }} statistics for {{ currentMonth }}</h5>
+      </div>
+      <ul role="list" class="stats-entries">
+        <li>
+          <div class="content-entry">
+            <span>Total income</span>
+            <span class="income-value">{{ budget.totalIncome.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
+          </div>
+        </li>
+        <li>
+          <div class="content-entry">
+            <span>Total Expenses</span>
+            <span class="expenses-value">{{ budget.totalExpenses.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
+          </div>
+        </li>
+        <li>
+          <div v-if="budget.totalSavings" class="content-entry">
+            <span>Total Savings</span>
+            <span class="savings-value">{{ budget.totalSavings.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>  
   </div>
-  
 </div>
 </template>
 
@@ -28,19 +55,16 @@ export default {
   },
   data() {
     return {
-      currentMonth: moment().format('MMMM')
-    }
-    
+      currentMonth: moment().format('MMMM'),
+    } 
   },
-  created() {
-    this.$store.dispatch(
-      'fetchCurrentMonthResourceEntries', 
-      'entries'
-    )
+  created(){
+    this.$store.state.dataReady = false
+    this.$store.dispatch('fetchBudgetsWithMonthlyEntries')
   },
   computed: {
-    entries() {
-      return this.$store.state.entries
+    budgets() {
+      return this.$store.state.budgets
     }
   },
 }

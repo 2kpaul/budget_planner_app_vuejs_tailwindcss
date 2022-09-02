@@ -5,10 +5,14 @@ import moment from 'moment';
 export default createStore({
   state: {
     categories: [],
-    currencies: [],
     types: [],
     entries: [],
-    flashMessage: ''
+    budgets: [],
+    flashMessage: '',
+    totalIncome: 0,
+    totalExpenses: 0,
+    totalSavings: 0,
+    dataReady: false,
   },
   getters: {
   },
@@ -45,23 +49,80 @@ export default createStore({
           console.log(error)
         })
     },
-    fetchCurrentMonthResourceEntries({ commit }, resource) {
-      DataService.getItems(resource + '?_expand=category&_expand=type&_expand=currency&_sort=created_at&_order=asc')
-        .then(response => {
-          //console.log(response);
-          const currentMonthData = response.filter( el => {
-            const entryMonth = moment(el.created_at,'DD-MM-YYYY')
-            const startOfCurrentMonth = moment().startOf('month').format('YYYY-MM-DD')
-            const endOfCurrentMonth = moment().endOf('month').format('YYYY-MM-DD')
+    fetchBudgetsWithMonthlyEntries({commit}) {
+
+      const promises = []
+
+      DataService.getItems('budgets?_expand=currency')
+      .then(budgets => {
+        if(budgets.length > 0) {
+          budgets.forEach(budget => {
+            promises.push(
+              DataService.getItems('entries' + '?_expand=category&_expand=type&_expand=budget&_sort=created_at&_order=asc&budgetId=' + budget.id)
+              .then(entries => {
+                const currentMonthEntries = entries.filter( entry => {
+                  const entryMonth = moment(entry.created_at,'DD-MM-YYYY')
+                  const startOfCurrentMonth = moment().startOf('month').format('YYYY-MM-DD')
+                  const endOfCurrentMonth = moment().endOf('month').format('YYYY-MM-DD')
+                  
+                  return entryMonth.isBetween(startOfCurrentMonth, endOfCurrentMonth, 'days', '[]')
+                })
+                
+                budget.entries = currentMonthEntries
+                
+
+                let totalIncome = 0;
+                let totalExpenses = 0;
+
+                const incomes = currentMonthEntries.filter(entry => {
+                  return parseInt(entry.typeId) === 1
+                });
+          
+                const expenses = currentMonthEntries.filter(entry => {
+                  return parseInt(entry.typeId) === 2
+                });
+                
+                if(incomes.length > 0) {
+                  incomes.forEach(entry => {
+                    totalIncome += parseInt(entry.value)
+                  });
+                }
+          
+                if(expenses.length > 0) {
+                  expenses.forEach(entry => {
+                    totalExpenses += parseInt(entry.value)
+                  });
+                }
+
+                budget.totalIncome = totalIncome
+                budget.totalExpenses = totalExpenses
+                budget.totalSavings = totalIncome - totalExpenses
+
+                
+
+              })
+              .then(response => {
+                
+              })
+              .catch(error => {
+                console.log(error)
+              })
+            )
             
-            return entryMonth.isBetween(startOfCurrentMonth, endOfCurrentMonth, 'days', '[]')
           })
           
-          commit('SET_RESOURCE', {resource: resource, data: currentMonthData})
-        })
-        .catch(error => {
-          console.log(error)
-        })
+        }
+        return budgets
+      })
+      .then(budgets => {
+        Promise.all(promises).then(() => {
+          commit('SET_RESOURCE', {resource: 'budgets', data: budgets})
+          this.state.dataReady = true
+        });  
+      })
+      .catch(error => {
+        console.log(error)
+      })  
     },
     setFlashMessage({ commit }, message) {
       commit('SET_FLASH_MESSAGE', message)

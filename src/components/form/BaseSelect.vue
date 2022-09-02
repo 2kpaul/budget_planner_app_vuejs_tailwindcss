@@ -13,7 +13,7 @@
                 :key="option.id" 
                 :value="option.id"
                 :selected="option === modelValue"
-            >{{ option.title }}
+            >{{ option.title }} {{ ('currency' in option) ? ' - ' + option.currency.title : '' }}
             </option>
         </select>
     </div>

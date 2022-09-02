@@ -18,6 +18,13 @@
         />
 
         <BaseSelect
+            :options="budgets"
+            v-model="entry.budgetId"
+            label="Budget"
+            required
+        />
+
+        <BaseSelect
             :options="types"
             v-model="entry.typeId"
             label="Type"
@@ -28,13 +35,6 @@
             :options="categories"
             v-model="entry.categoryId"
             label="Category"
-            required
-        />
-
-        <BaseSelect
-            :options="currencies"
-            v-model="entry.currencyId"
-            label="Currency"
             required
         />
 
@@ -83,9 +83,9 @@ export default {
                 title: '',
                 description: '',
                 created_at: '',
+                budgetId: '',
                 typeId: '',
                 categoryId: '',
-                currencyId: '',
                 value: ''
             },
             errors: false
@@ -93,8 +93,8 @@ export default {
     },
     created() {
         this.$store.dispatch('fetchResourceItems', 'types')
-        this.$store.dispatch('fetchResourceItems', 'currencies')
         this.$store.dispatch('fetchResourceItems', 'categories')
+        this.$store.dispatch('fetchResourceItems', 'budgets?_expand=currency')
     },
     computed: {
         types() {
@@ -105,6 +105,9 @@ export default {
         },
         categories() {
             return this.$store.state.categories
+        },
+        budgets() {
+            return this.$store.state.budgets
         }
     },
     methods: {
