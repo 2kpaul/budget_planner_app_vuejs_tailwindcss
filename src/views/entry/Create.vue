@@ -59,7 +59,7 @@
         </div>
         
 
-        <button type="submit">add</button>
+        <button type="submit" >add</button>
     </form>
     <span v-if="errors" class="error">Please enter form data</span>
 </template>

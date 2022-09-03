@@ -1,6 +1,8 @@
 <template>
     <div v-if="this.$store.state.dataReady">
-        <div class="alert-success" v-if="this.$store.state.flashMessage">{{ this.$store.state.flashMessage }}</div>
+        <div class="alert-success" v-if="this.$store.state.flashMessage" role="alert">
+            <span class="font-medium">{{ this.$store.state.flashMessage }}</span>
+        </div>
         <div class="budgets-listing">
             <div>
                 <form @submit.prevent="submitForm" class="form-create-entry">
@@ -27,7 +29,11 @@
                     <h2>Budgets List</h2>
                 </div>
                 <ul role="list" class="entries">
-                    <li class="text-sm font-bold" v-for="entry in budgets" :key="entry.id">{{ entry.title }} - {{entry.currency.title}}</li>
+                    <li v-for="entry in budgets" :key="entry.id">
+                        <span class="badge-indigo-lg">
+                            {{ entry.title }} - {{entry.currency.title}}
+                        </span>
+                    </li>
                 </ul>
             </div>
         </div>

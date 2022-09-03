@@ -1,13 +1,13 @@
 <template>
 <li>
   <div class="content-entry">
-      <div :class="(entry.type.title === 'Income') ? 'type-income' : 'type-expenses'">
+      <div :class="(entry.type.title === 'Income') ? 'badge-green-sm' : 'badge-red-sm'">
           {{entry.type.title}}
       </div>
-      <div class="category">
+      <div class="badge-indigo-sm">
           {{entry.category.title}}
       </div>
-      <div class="title">
+      <div class="badge-dark-sm">
           <p>
               {{entry.title}}
           </p>
@@ -15,14 +15,16 @@
               {{entry.description}}
           </p> --> 
       </div>
-      <div :class="(entry.type.title === 'Income') ? 'income-value' : 'expenses-value'">
+      <div :class="(entry.type.title === 'Income') ? 'badge-green-sm' : 'badge-red-sm'">
           {{ entry.type.title === 'Income' ? '+' : '-' }}  {{ parseInt(entry.value).toLocaleString("en-US") }} {{ currency }}
       </div>
-      <div class="created-date">
+      <div class="badge-dark-sm">
           {{entry.created_at}}
       </div>
       <div class="actions">
-        <button @click="deleteEntry(entry.id)">delete</button>
+        <span @click="deleteEntry(entry.id)" class="delete-icon">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+        </span>
       </div>
   </div>
 </li>

@@ -2,44 +2,24 @@
 <div v-if="this.$store.state.dataReady">
   <div class="alert-success" v-if="this.$store.state.flashMessage">{{ this.$store.state.flashMessage }}</div>
   <div v-for="budget in budgets" :key="budget.id" class="budgets">
-    <div class="entries-card col-span-2">
+    <div class="entries-card">
       <div class="header">
-        <h2>{{ budget.title }} for {{ currentMonth }} <span> - {{ budget.currency.title }} currency</span></h2>
+        <h6 class="text-lg font-bold dark:text-white">{{ budget.title }} for {{ currentMonth }} - <span class="badge-yellow-sm">{{ budget.currency.title }} currency</span></h6>
         <router-link to="/entries/create">Add Entry</router-link>
       </div>
+      <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700">
       <div>
       <ul role="list" class="entries">
           <Entry v-for="entry in budget.entries" :key="entry.id" :entry="entry" :currency="budget.currency.title"/> 
       </ul>
+      <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700">
+      <div class="footer">
+        <span class="badge-green-lg">Total Income: {{ budget.totalIncome.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
+        <span class="badge-red-lg">Total Expenses: {{ budget.totalExpenses.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
+        <span class="badge-indigo-lg">Total Savings: {{ budget.totalSavings.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
       </div>
-    </div>
-
-    <div class="stats-card">
-      <div class="header">
-        <h2>{{ budget.title }} statistics for {{ currentMonth }}</h2>
-        <h3>{{ budget.currency.title }} currency</h3>
       </div>
-      <ul role="list" class="stats-entries">
-        <li>
-          <div class="content-entry">
-            <span>Total income</span>
-            <span class="income-value">{{ budget.totalIncome.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
-          </div>
-        </li>
-        <li>
-          <div class="content-entry">
-            <span>Total Expenses</span>
-            <span class="expenses-value">{{ budget.totalExpenses.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
-          </div>
-        </li>
-        <li>
-          <div v-if="budget.totalSavings" class="content-entry">
-            <span>Total Savings</span>
-            <span class="savings-value">{{ budget.totalSavings.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
-          </div>
-        </li>
-      </ul>
-    </div>  
+    </div> 
   </div>
 </div>
 </template>

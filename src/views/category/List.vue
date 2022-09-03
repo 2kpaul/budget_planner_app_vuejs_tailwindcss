@@ -20,8 +20,13 @@
                     <h2>Categories List</h2>
                 </div>
                 <ul role="list" class="entries">
-                    <li class="text-sm font-bold" v-for="entry in categories" :key="entry.id">{{ entry.title }}</li>
+                    <li v-for="entry in categories" :key="entry.id">
+                        <span class="badge-indigo-lg">
+                            {{ entry.title }}
+                        </span>
+                    </li>
                 </ul>
+                
             </div>
         </div>
         
