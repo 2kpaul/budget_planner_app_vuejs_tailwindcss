@@ -121,34 +121,30 @@
       "id": 3
     },
     {
-      "title": "Abonament World Class",
-      "description": "abonament sala",
+      "title": "Cumparaturi",
+      "description": "Lidl",
       "created_at": "01-09-2022",
       "budgetId": "1",
       "typeId": "2",
-      "categoryId": "8",
-      "value": "250",
-      "id": 4
+      "categoryId": "1",
+      "value": "210",
+      "id": 7
     },
     {
-      "title": "Paul",
-      "description": "salariu",
-      "created_at": "10-09-2022",
+      "title": "Cumparaturi",
+      "description": "Carrefour",
+      "created_at": "03-09-2022",
       "budgetId": "1",
-      "typeId": "1",
-      "categoryId": "12",
-      "value": "10000",
-      "id": 5
+      "typeId": "2",
+      "categoryId": "1",
+      "value": "270",
+      "id": 8
     },
     {
-      "title": "Rent",
-      "description": "",
-      "created_at": "02-09-2022",
-      "budgetId": "2",
-      "typeId": "1",
-      "categoryId": "13",
-      "value": "350",
-      "id": 6
+      "id": 9
+    },
+    {
+      "id": 10
     }
   ]
 }

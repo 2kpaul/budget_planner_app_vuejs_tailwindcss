@@ -7,6 +7,7 @@ export default createStore({
     categories: [],
     types: [],
     entries: [],
+    entry: {},
     budgets: [],
     flashMessage: '',
     totalIncome: 0,
@@ -21,6 +22,10 @@ export default createStore({
       //get only resource if it has filter params
       const resource = payload.resource.split("?");
       state[resource[0]] = payload.data
+      state.dataReady = true
+    },
+    SET_RESOURCE_ITEM(state, payload){
+      state[payload.resource_item] = payload.data
       state.dataReady = true
     },
     SET_FLASH_MESSAGE(state, message) {
@@ -41,10 +46,10 @@ export default createStore({
           console.log(error)
         })
     },
-    fetchResourceItem({ commit }, resource) {
-      DataService.getItems(resource)
+    fetchResourceItem({ commit }, {resource, resource_item, id}) {
+      DataService.getItem(resource, id)
         .then(response => {
-          commit('SET_RESOURCE', {resource: resource, data: response})
+          commit('SET_RESOURCE_ITEM', {resource_item: resource_item, data: response})
         })
         .catch(error => {
           console.log(error)

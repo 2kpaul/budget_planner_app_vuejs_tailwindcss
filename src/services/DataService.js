@@ -15,7 +15,7 @@ function getItems(resource) {
 }
 
 function getItem(resource, id) {
-         axios.get(db_url + '/'+ resource +'/' + id)
+    return axios.get(db_url + '/'+ resource +'/' + id)
         .then(response => {
             return response.data
         })
@@ -26,8 +26,13 @@ function getItem(resource, id) {
 
 async function saveItem(resource, entry) {
 
-    await axios.post(db_url + '/' + resource, entry)
-        
+    if(entry.id) {
+        console.log('put request executed')
+        await axios.put(db_url + '/' + resource + '/' + entry.id, entry)
+    } else {
+        await axios.post(db_url + '/' + resource, entry)
+    }
+     
 }
 
 async function deleteItem(resource, id) {

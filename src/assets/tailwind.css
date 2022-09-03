@@ -64,9 +64,11 @@ label {
             @apply text-sm font-medium text-gray-900 truncate
         }
 
-        .actions button {
-            @apply text-white bg-red-600 font-bold rounded-full text-xs p-1
-        }
+       .actions {
+        @apply grid grid-cols-2 gap-2
+       }
+
+        
     }
 }
 
@@ -203,4 +205,9 @@ label {
 .delete-icon svg:hover {
     cursor: pointer;
     fill:  rgb(155 28 28)
+}
+
+.edit-icon svg:hover {
+    cursor: pointer;
+    fill:  rgb(3 84 63)
 }
