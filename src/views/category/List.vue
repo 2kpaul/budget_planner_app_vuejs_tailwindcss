@@ -3,27 +3,17 @@
         <div class="alert-success" v-if="this.$store.state.flashMessage">{{ this.$store.state.flashMessage }}</div>
         <div class="budgets-listing">
             <div>
-                <form @submit.prevent="submitForm" class="form-create-entry">
-                    <h1>New Category</h1>
-                    <BaseInput
-                        v-model="category.title"
-                        label="Title"
-                        type="text"
-                        required 
-                    />
-                    <button type="submit">add</button>
-                </form>
-                <span v-if="errors" class="error">Please enter form data</span>
+                <CategoryForm :category="category" :formEditState="formEditState" />
             </div>
             <div class="entries-budgets">
-                <div class="header">
-                    <h2>Categories List</h2>
-                </div>
                 <ul role="list" class="entries">
                     <li v-for="entry in categories" :key="entry.id">
                         <span class="badge-indigo-lg">
-                            {{ entry.title }}
+                            <a :href="'/categories/' + entry.id">
+                                {{ entry.title }}
+                            </a>
                         </span>
+                        
                     </li>
                 </ul>
                 
@@ -34,54 +24,33 @@
 </template>
 
 <script>
-import BaseInput from '@/components/form/BaseInput.vue'
-import DataService from '@/services/DataService'
+import CategoryForm from '@/components/form/CategoryForm.vue'
 
 export default {
     components: {
-        BaseInput,
+        CategoryForm
     },
+    props: ['id'],
     data() {
         return {
-            category: {
-                title: ''
-            },
-            errors: false
+            category: {},
+            formEditState: false
         }
     },
     created(){
+        if(this.id) {
+            this.$store.dispatch('fetchResourceItem', {resource: 'categories', resource_item: 'category', id: this.id})
+            this.formEditState = true
+        }
         this.$store.state.dataReady = false
         this.$store.dispatch('fetchResourceItems', 'categories')
     },
     computed: {
         categories() {
             return this.$store.state.categories
-        }
-    },
-    methods: {
-        submitForm() {
-            if(!this.validateForm(this.category)) {
-                DataService.saveItem('categories', this.category)
-                .then(response => {
-                    this.$store.dispatch('setFlashMessage', 'New category : "' + this.category.title + '" was added to list')
-                    this.$store.dispatch('fetchResourceItems', 'categories')
-                    this.category = {}
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-                
-            } 
         },
-
-        validateForm(budget) {
-            this.errors = false
-            if(budget.title == '') {
-                this.errors = true
-                return true
-            }
-
-            return false
+        category() {
+            return this.$store.state.budget
         }
     }
 }

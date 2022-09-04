@@ -35,10 +35,22 @@ const routes = [
     component: BudgetList
   },
   {
+    path: '/budgets/:id',
+    name: 'edit-budget',
+    component: BudgetList,
+    props: true,
+  },
+  {
     path: '/categories',
     name: 'categories',
     component: CategoryList
   },
+  {
+    path: '/categories/:id',
+    name: 'edit-category',
+    component: CategoryList,
+    props: true,
+  }
 ]
 
 const router = createRouter({

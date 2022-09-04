@@ -5,10 +5,12 @@ import moment from 'moment';
 export default createStore({
   state: {
     categories: [],
+    category: {},
     types: [],
     entries: [],
     entry: {},
     budgets: [],
+    budget: {},
     flashMessage: '',
     totalIncome: 0,
     totalExpenses: 0,

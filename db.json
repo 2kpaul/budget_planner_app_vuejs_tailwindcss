@@ -3,11 +3,11 @@
     {
       "id": 1,
       "title": "Monthly Budget",
-      "currencyId": 1
+      "currencyId": "1"
     },
     {
       "id": 2,
-      "title": "Savings",
+      "title": "Saving",
       "currencyId": 2
     }
   ],
@@ -24,7 +24,7 @@
   "categories": [
     {
       "id": 1,
-      "title": "Food"
+      "title": "Foods"
     },
     {
       "id": 2,
@@ -73,6 +73,9 @@
     {
       "id": 13,
       "title": "Rent"
+    },
+    {
+      "id": 14
     }
   ],
   "currencies": [
@@ -145,6 +148,16 @@
     },
     {
       "id": 10
+    },
+    {
+      "title": "World Class",
+      "description": "",
+      "created_at": "01-09-2022",
+      "budgetId": "1",
+      "typeId": "2",
+      "categoryId": "8",
+      "value": "250",
+      "id": 11
     }
   ]
 }

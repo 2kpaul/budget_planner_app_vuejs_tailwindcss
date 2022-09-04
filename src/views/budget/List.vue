@@ -5,34 +5,17 @@
         </div>
         <div class="budgets-listing">
             <div>
-                <form @submit.prevent="submitForm" class="form-create-entry">
-                    <h1>New Budget</h1>
-                    <BaseInput
-                        v-model="budget.title"
-                        label="Title"
-                        type="text"
-                        required 
-                    />
-
-                    <BaseSelect
-                        :options="currencies"
-                        v-model="budget.currencyId"
-                        label="Currency"
-                        required
-                    />
-                    <button type="submit">add</button>
-                </form>
-                <span v-if="errors" class="error">Please enter form data</span>
+                <BudgetForm :budget="budget" :formEditState="formEditState"/>
             </div>
             <div class="entries-budgets">
-                <div class="header">
-                    <h2>Budgets List</h2>
-                </div>
                 <ul role="list" class="entries">
                     <li v-for="entry in budgets" :key="entry.id">
                         <span class="badge-indigo-lg">
-                            {{ entry.title }} - {{entry.currency.title}}
+                            <a :href="'/budgets/' + entry.id">
+                                {{ entry.title }} - {{entry.currency.title}}
+                            </a>
                         </span>
+                        
                     </li>
                 </ul>
             </div>
@@ -42,61 +25,33 @@
 </template>
 
 <script>
-import BaseInput from '@/components/form/BaseInput.vue'
-import BaseSelect from '@/components/form/BaseSelect.vue'
-import DataService from '@/services/DataService'
+import BudgetForm from '@/components/form/BudgetForm.vue'
 
 export default {
     components: {
-        BaseInput,
-        BaseSelect
+        BudgetForm
     },
+    props: ['id'],
     data() {
         return {
-            budget: {
-                title: '',
-                currencyId: '',
-            },
-            errors: false
+            budget: {},
+            formEditState: false
         }
     },
     created(){
         this.$store.state.dataReady = false
+        if(this.id) {
+            this.$store.dispatch('fetchResourceItem', {resource: 'budgets', resource_item: 'budget', id: this.id})
+            this.formEditState = true
+        }
         this.$store.dispatch('fetchResourceItems', 'budgets?_expand=currency')
-        this.$store.dispatch('fetchResourceItems', 'currencies')
     },
     computed: {
         budgets() {
             return this.$store.state.budgets
         },
-        currencies() {
-            return this.$store.state.currencies
-        }
-    },
-    methods: {
-        submitForm() {
-            if(!this.validateForm(this.budget)) {
-                DataService.saveItem('budgets', this.budget)
-                .then(response => {
-                    this.$store.dispatch('setFlashMessage', 'New budget : "' + this.budget.title + '" was added to list')
-                    this.$store.dispatch('fetchResourceItems', 'budgets?_expand=currency')
-                    this.budget = {}
-                })
-                .catch(error => {
-                    console.log(error)
-                })
-                
-            } 
-        },
-
-        validateForm(budget) {
-            this.errors = false
-            if(budget.title == '' || budget.currencyId == '') {
-                this.errors = true
-                return true
-            }
-
-            return false
+        budget() {
+            return this.$store.state.budget
         }
     }
 }

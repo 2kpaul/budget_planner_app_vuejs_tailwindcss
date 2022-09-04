@@ -3,7 +3,7 @@
     @submit.prevent="submitForm"
     class="form-create-entry"
     >
-        <h1>New Entry</h1>
+        <h1>{{ this.formEditState ? 'Edit Entry' : 'Add Entry' }}</h1>
         <BaseInput
             v-model="entry.title"
             label="Title"
