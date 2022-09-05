@@ -5,6 +5,7 @@ import EntryCreate from '@/views/entry/Create.vue'
 import EntryEdit from '@/views/entry/Edit.vue'
 import BudgetList from '@/views/budget/List.vue'
 import CategoryList from '@/views/category/List.vue'
+import NotFound from '@/views/NotFound.vue'
 import NProgress from 'nprogress'
 
 const routes = [
@@ -50,7 +51,12 @@ const routes = [
     name: 'edit-category',
     component: CategoryList,
     props: true,
-  }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
+  },
 ]
 
 const router = createRouter({
