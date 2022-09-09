@@ -73,6 +73,10 @@
     {
       "id": 13,
       "title": "Rent"
+    },
+    {
+      "title": "Bank Rate",
+      "id": 14
     }
   ],
   "currencies": [
@@ -155,6 +159,26 @@
       "categoryId": "8",
       "value": "250",
       "id": 11
+    },
+    {
+      "title": "Cumparaturi",
+      "description": "auchan + lidl",
+      "created_at": "06-09-2022",
+      "budgetId": "1",
+      "typeId": "2",
+      "categoryId": "1",
+      "value": "260",
+      "id": 12
+    },
+    {
+      "title": "7card",
+      "description": "",
+      "created_at": "06-09-2022",
+      "budgetId": "1",
+      "typeId": "2",
+      "categoryId": "8",
+      "value": "155",
+      "id": 13
     }
   ]
 }

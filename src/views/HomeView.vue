@@ -7,12 +7,12 @@
         <h6 class="text-lg font-bold dark:text-white">{{ budget.title }} for {{ currentMonth }} - <span class="badge-yellow-sm">{{ budget.currency.title }} currency</span></h6>
         <router-link to="/entries/create">Add Entry</router-link>
       </div>
-      <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700">
+      <hr class="my-8 h-px bg-gray-200/50 border-0 dark:bg-gray-700">
       <div>
       <ul role="list" class="entries">
           <Entry v-for="entry in budget.entries" :key="entry.id" :entry="entry" :currency="budget.currency.title"/> 
       </ul>
-      <hr class="my-8 h-px bg-gray-200 border-0 dark:bg-gray-700">
+      <hr class="my-8 h-px bg-gray-200/50 border-0 dark:bg-gray-700">
       <div class="footer">
         <span class="badge-green-lg">Total Income: {{ budget.totalIncome.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
         <span class="badge-red-lg">Total Expenses: {{ budget.totalExpenses.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
