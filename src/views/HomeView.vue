@@ -18,6 +18,9 @@
         <span class="badge-red-lg">Total Expenses: {{ budget.totalExpenses.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
         <span class="badge-indigo-lg">Total Savings: {{ budget.totalSavings.toLocaleString("en-US") }} {{ budget.currency.title }}</span>
       </div>
+      <div class="footer-copy mt-10">
+        <a href="http://paul2d.dev" target="_blank" class="text-sm hover:text-green-600">made by Paul2D</a>
+      </div>
       </div>
     </div> 
   </div>
