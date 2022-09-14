@@ -2,6 +2,7 @@
 <div class="board">
 
   <nav class="container mx-auto max-w-5xl bg-gray-200/50 border-gray-200 px-2 sm:px-4 py-2.5 mb-2 rounded dark:bg-gray-900 ">
+    <div class="bg-red-500 text-xs text-white p-2"> This is a demo app, data will not persist when you take actions !!!</div>
     <div class="flex flex-wrap justify-between items-center ">
       <a href="/" class="flex items-center">
           <img src="https://avatars.githubusercontent.com/u/74258307?s=96&v=4" class="mr-3 h-6 sm:h-9"  />

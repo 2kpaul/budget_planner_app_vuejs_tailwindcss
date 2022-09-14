@@ -105,7 +105,7 @@
       "value": 10000
     },
     {
-      "title": "Cumparaturi",
+      "title": "Food",
       "description": "mancare",
       "created_at": "30-08-2022",
       "budgetId": "1",
@@ -115,7 +115,7 @@
       "id": 2
     },
     {
-      "title": "Cumparaturi",
+      "title": "Shopping",
       "description": "mancare",
       "budgetId": "1",
       "typeId": "2",
@@ -125,7 +125,7 @@
       "id": 3
     },
     {
-      "title": "Cumparaturi",
+      "title": "Food",
       "description": "Lidl",
       "created_at": "01-09-2022",
       "budgetId": "1",
@@ -135,7 +135,7 @@
       "id": 7
     },
     {
-      "title": "Cumparaturi",
+      "title": "Shopping",
       "description": "Carrefour",
       "created_at": "03-09-2022",
       "budgetId": "1",
@@ -179,6 +179,16 @@
       "categoryId": "8",
       "value": "155",
       "id": 13
+    },
+    {
+      "title": "Rent",
+      "description": "",
+      "created_at": "14-09-2022",
+      "budgetId": "2",
+      "typeId": "1",
+      "categoryId": "13",
+      "value": "400",
+      "id": 14
     }
   ]
 }

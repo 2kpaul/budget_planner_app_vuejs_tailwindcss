@@ -2,7 +2,8 @@ import axios from 'axios'
 import router from '@/router';
 import { v4 as uuidv4 } from 'uuid'
 
-const db_url = 'http://localhost:3000';
+//const db_url = 'http://localhost:3000';
+const db_url = 'https://my-json-server.typicode.com/paul2Dev/db-budget-planner'
 
 function getItems(resource) {
     return axios.get(db_url + '/' + resource)
